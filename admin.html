@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="إدارة تأكيد حضور دعوة زفاف حاتم ومآثر" />
+  <title>إدارة الدعوة - حاتم ومآثر</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body class="admin-body">
+  <main class="admin-shell">
+    <header class="admin-header">
+      <div><p class="eyebrow">إدارة الدعوة</p><h1>قائمة تأكيد الحضور</h1></div>
+      <a class="main-button main-button--small" href="index.html">العودة للدعوة</a>
+    </header>
+    <section class="invitation-card admin-controls">
+      <button id="refreshBtn" class="main-button" type="button">تحديث البيانات</button>
+      <button id="exportCsvBtn" class="main-button" type="button">تصدير CSV</button>
+      <button id="clearLocalBtn" class="main-button danger-button" type="button">مسح البيانات المحلية</button>
+    </section>
+    <section class="invitation-card admin-summary" aria-label="ملخص الحضور">
+      <div><strong id="totalCount">0</strong><span>إجمالي التسجيلات</span></div>
+      <div><strong id="attendingCount">0</strong><span>سيحضرون</span></div>
+      <div><strong id="guestTotalCount">0</strong><span>إجمالي عدد الحضور</span></div>
+    </section>
+    <section class="invitation-card table-card">
+      <div id="adminStatus" class="form-status" role="status" aria-live="polite"></div>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>الاسم</th><th>رقم الهاتف</th><th>حالة الحضور</th><th>عدد الحضور</th><th>الرسالة</th><th>وقت التسجيل</th></tr></thead>
+          <tbody id="guestsTableBody"><tr><td colspan="6">جاري تحميل البيانات...</td></tr></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+  <script src="js/config.js"></script>
+  <script src="js/admin.js"></script>
+</body>
+</html>
