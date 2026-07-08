@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="دعوة زفاف حاتم ومآثر" />
+  <title>دعوة زفاف حاتم ومآثر</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <section id="openingScreen" class="screen opening-screen is-active" aria-label="شاشة افتتاح الدعوة">
+      <div class="theme-layer theme-layer--opening" aria-hidden="true"><!-- THEME START --><!-- THEME END --></div>
+      <div class="opening-content">
+        <p class="eyebrow">دعوة زفاف</p>
+        <h1><span id="openingNames">حاتم ومآثر</span></h1>
+        <p class="opening-subtitle">لمسة حب.. وبداية حكاية</p>
+      </div>
+      <div class="interactive-zone" aria-label="منطقة فتح الدعوة">
+        <!-- ANIMATION AREA -->
+        <div id="pearlHandle" class="pearl-handle" role="button" tabindex="0" aria-label="المس اللؤلؤة أو اسحبها للأعلى لفتح الدعوة">
+          <span class="pearl-core" aria-hidden="true"></span>
+          <span class="pearl-progress" aria-hidden="true"></span>
+        </div>
+        <p class="interaction-hint">المس اللؤلؤة لبدء الحكاية</p>
+        <p class="interaction-hint interaction-hint--small">أو اسحب اللؤلؤة للأعلى لفتح الدعوة</p>
+      </div>
+    </section>
+
+    <section id="transitionScreen" class="screen transition-screen" aria-label="شاشة الانتقال" hidden>
+      <div class="theme-layer theme-layer--transition" aria-hidden="true"><!-- THEME START --><!-- THEME END --></div>
+      <div class="transition-content">
+        <p class="small-symbol" aria-hidden="true">❖</p>
+        <h2>لحظة تُكتب للأبد</h2>
+        <!-- IMAGE PLACEHOLDER -->
+        <div class="couple-placeholder" aria-label="مكان صورة أو رسم العروسين"><span>مكان صورة أو رسم العروسين</span></div>
+        <p>جاري الانتقال إلى يومنا المنتظر</p>
+      </div>
+    </section>
+
+    <main id="invitationContent" class="invitation-page" hidden>
+      <div class="theme-layer theme-layer--main" aria-hidden="true"><!-- THEME START --><!-- THEME END --></div>
+      <header class="top-actions" aria-label="أزرار سريعة">
+        <button id="shareBtn" class="icon-button" type="button">مشاركة</button>
+        <button id="copyLinkBtn" class="icon-button" type="button">نسخ الرابط</button>
+      </header>
+
+      <section class="invitation-card hero-card" aria-label="تفاصيل الدعوة">
+        <p class="eyebrow">مدعوون لحضور حفل زفاف</p>
+        <h1 id="mainNames">حاتم ومآثر</h1>
+        <div class="divider" aria-hidden="true"></div>
+        <div class="details-list">
+          <div class="detail-item"><span class="detail-icon" aria-hidden="true">📅</span><div><strong>التاريخ</strong><span id="dateText">٦ أغسطس ٢٠٢٦</span></div></div>
+          <div class="detail-item"><span class="detail-icon" aria-hidden="true">🏛️</span><div><strong>المكان</strong><span id="venueText">قاعة المرايا</span></div></div>
+          <div class="detail-item"><span class="detail-icon" aria-hidden="true">📍</span><div><strong>الموقع</strong><span id="locationText">سوق الخوض</span></div></div>
+        </div>
+        <div class="hosts-area">
+          <p>بكل حب تتشرف بدعوتكم</p>
+          <strong id="hostOne">ربيعة بنت خالد الحارثية</strong>
+          <strong id="hostTwo">سميرة بنت يحيى الشبيبية</strong>
+        </div>
+      </section>
+
+      <section class="invitation-card countdown-card" aria-label="العد التنازلي">
+        <h2>الوقت المتبقي</h2>
+        <div class="countdown-grid" id="countdownGrid">
+          <div><strong id="days">00</strong><span>يوم</span></div>
+          <div><strong id="hours">00</strong><span>ساعة</span></div>
+          <div><strong id="minutes">00</strong><span>دقيقة</span></div>
+          <div><strong id="seconds">00</strong><span>ثانية</span></div>
+        </div>
+      </section>
+
+      <section class="actions-grid" aria-label="أزرار الدعوة">
+        <a id="mapsBtn" class="main-button" href="https://www.google.com/maps/search/?api=1&query=قاعة+المرايا+سوق+الخوض" target="_blank" rel="noopener">فتح الموقع في Google Maps</a>
+        <button id="calendarBtn" class="main-button" type="button">إضافة إلى التقويم</button>
+        <a id="whatsappBtn" class="main-button" href="#" target="_blank" rel="noopener">مشاركة عبر واتساب</a>
+      </section>
+
+      <section class="invitation-card rsvp-card" aria-label="تأكيد الحضور">
+        <h2>تأكيد حضوركم</h2>
+        <p class="muted">اضغط على اللؤلؤة لفتح نموذج تأكيد الحضور.</p>
+        <button id="openRsvpBtn" class="rsvp-trigger" type="button" aria-expanded="false" aria-controls="rsvpPanel"><span class="rsvp-trigger-pearl" aria-hidden="true"></span><span>افتح نموذج تأكيد الحضور</span></button>
+        <div id="rsvpPanel" class="rsvp-panel" hidden>
+          <form id="rsvpForm" class="rsvp-form">
+            <label>الاسم الكامل<input id="guestName" name="name" type="text" autocomplete="name" required placeholder="اكتب الاسم الكامل" /></label>
+            <label>رقم الهاتف<input id="guestPhone" name="phone" type="tel" autocomplete="tel" placeholder="مثال: 9xxxxxxx" /></label>
+            <label>عدد الحضور<input id="guestsCount" name="guestsCount" type="number" min="1" max="20" value="1" required /></label>
+            <label>حالة الحضور<select id="attendance" name="attendance" required><option value="سأحضر بإذن الله">سأحضر بإذن الله</option><option value="أعتذر عن الحضور">أعتذر عن الحضور</option><option value="سأؤكد لاحقًا">سأؤكد لاحقًا</option></select></label>
+            <label>رسالة اختيارية<textarea id="message" name="message" rows="3" placeholder="اكتب رسالة قصيرة إن رغبت"></textarea></label>
+            <button class="submit-button" type="submit">إرسال التأكيد</button>
+          </form>
+          <div id="formStatus" class="form-status" role="status" aria-live="polite"></div>
+        </div>
+        <article id="guestCard" class="guest-card" hidden>
+          <p class="muted">آخر تأكيد حضور</p><h3 id="guestCardName"></h3><p id="guestCardAttendance"></p><p id="guestCardGuests"></p><time id="guestCardTime"></time>
+        </article>
+      </section>
+      <footer class="page-footer"><p>نسأل الله أن يتمم لنا ولكم الفرح على خير.</p><a href="admin.html">صفحة الإدارة</a></footer>
+    </main>
+  </div>
+  <script src="js/config.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
