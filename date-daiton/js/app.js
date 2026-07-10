@@ -1,6 +1,8 @@
 const scenes = Array.from(document.querySelectorAll('.scene'));
+const $ = (id) => document.getElementById(id);
+
 const state = {
-  curtainOpened: false,
+  opened: false,
   routeStarted: false,
   ruleIndex: 0,
   accepted: false,
@@ -10,77 +12,41 @@ const state = {
 const rules = [
   {
     title: 'القانون الأول',
-    content: `
-      <p>يُمنع التحدث خلال ديت ديتون عن المواضيع التالية:</p>
-      <ul>
-        <li>تجهيزات الزواج</li>
-        <li>تجهيزات الشقة</li>
-        <li>تجهيزات السفر</li>
-      </ul>
-    `,
+    body: `<p>يُمنع التحدث خلال ديت ديتون عن:</p><ul><li>تجهيزات الزواج</li><li>تجهيزات الشقة</li><li>تجهيزات السفر</li></ul>`,
   },
   {
     title: 'القانون الثاني',
-    content: `
-      <p>المواضيع المسموح التحدث بها:</p>
-      <ul>
-        <li>الأحوال الشخصية</li>
-        <li>الحياة بشكل عام</li>
-        <li>الضحك، الذكريات، والأشياء الخفيفة الجميلة</li>
-      </ul>
-    `,
+    body: `<p>المواضيع المسموح التحدث بها:</p><ul><li>الأحوال الشخصية</li><li>الحياة بشكل عام</li><li>الضحك والذكريات والأشياء الخفيفة</li></ul>`,
   },
   {
     title: 'القانون الثالث',
-    content: `
-      <p>المواضيع الثلاثة السابقة بنتكلم عنها بعد ديت ديتون في المنزل.</p>
-      <p>السبب: نأخذ راحتنا في الطلعة، ونخلي الريوق للضحك والهدوء والوناسة.</p>
-    `,
+    body: `<p>المواضيع الثلاثة السابقة بنتكلم عنها بعد ديت ديتون في المنزل.</p><p>عشان نأخذ راحتنا ونستمتع بالريوق والطلعة.</p>`,
   },
 ];
 
-const $ = (id) => document.getElementById(id);
-
 function goTo(sceneId) {
-  scenes.forEach(scene => scene.classList.remove('active'));
+  scenes.forEach((scene) => scene.classList.remove('active'));
   const target = $(sceneId);
-  if (target) {
-    target.classList.add('active');
-    if (sceneId === 'sceneClass') {
-      setTimeout(() => $('classTransition')?.remove(), 1500);
-      renderRule();
-    }
+  if (!target) return;
+  target.classList.add('active');
+  if (sceneId === 'classScene') {
+    const wipe = $('doorWipe');
+    if (wipe) setTimeout(() => wipe.remove(), 1400);
+    renderRule();
   }
 }
 
-function openCurtain() {
-  if (state.curtainOpened) return;
-  state.curtainOpened = true;
-
-  const stage = $('curtainStage');
-  const title = $('titleCard');
-  const msg = $('inviteMessage');
-  const speech = $('introSpeech');
-  const button = $('openCurtainBtn');
-
-  button.disabled = true;
-  stage.classList.add('open');
-  speech.textContent = 'تفضلي.. فتحت الدعوة';
-
-  setTimeout(() => title.classList.add('hidden'), 520);
-  setTimeout(() => {
-    msg.classList.remove('hidden');
-    msg.scrollIntoView({ block: 'center', behavior: 'smooth' });
-  }, 1700);
+function openInvite() {
+  if (state.opened) return;
+  state.opened = true;
+  $('heroCard')?.classList.add('hidden');
+  $('inviteCard')?.classList.remove('hidden');
 }
 
 function renderRule() {
   const rule = rules[state.ruleIndex];
   $('ruleTitle').textContent = rule.title;
-  $('ruleContent').innerHTML = rule.content;
-  $('teacherAvatar')?.classList.remove('tap');
-  void $('teacherAvatar')?.offsetWidth;
-  $('teacherAvatar')?.classList.add('tap');
+  $('ruleBody').innerHTML = rule.body;
   $('prevRule').disabled = state.ruleIndex === 0;
   $('nextRule').textContent = state.ruleIndex === rules.length - 1 ? 'خلصنا القوانين' : 'القانون التالي';
   if (state.ruleIndex === rules.length - 1) $('classNext').classList.remove('hidden');
@@ -105,28 +71,24 @@ function prevRule() {
 function startRoute() {
   if (state.routeStarted) return;
   state.routeStarted = true;
-  const car = $('routeCar');
-  const avatar = $('routeAvatar');
-  const btn = $('rideBtn');
-  btn.textContent = 'جاري التحرك...';
-  avatar.classList.add('hide');
-  setTimeout(() => car.classList.add('drive'), 350);
+  $('rideBtn').textContent = 'جاري التحرك...';
+  $('routePerson')?.classList.add('hide');
+  setTimeout(() => $('car')?.classList.add('drive'), 350);
   setTimeout(() => {
-    btn.textContent = 'وصلنا Bound café';
+    $('rideBtn').textContent = 'وصلنا Bound café';
     $('routeNext').classList.remove('hidden');
   }, 3300);
 }
 
 function launchConfetti() {
   const app = $('app');
-  for (let i = 0; i < 70; i += 1) {
-    const piece = document.createElement('span');
-    piece.className = 'confetti';
-    piece.style.left = `${Math.random() * 100}%`;
-    piece.style.animationDelay = `${Math.random() * 1.2}s`;
-    piece.style.transform = `rotate(${Math.random() * 180}deg)`;
-    app.appendChild(piece);
-    setTimeout(() => piece.remove(), 4300);
+  for (let i = 0; i < 78; i += 1) {
+    const c = document.createElement('span');
+    c.className = 'confetti';
+    c.style.left = `${Math.random() * 100}%`;
+    c.style.animationDelay = `${Math.random() * 1.2}s`;
+    app.appendChild(c);
+    setTimeout(() => c.remove(), 4400);
   }
 }
 
@@ -141,15 +103,15 @@ function acceptInvite() {
     venue: 'Bound café',
   }));
   $('savedText').textContent = 'تم حفظ الموافقة داخل الدعوة.';
-  const avatar = $('finalAvatar');
-  avatar.classList.add('climb');
+  const hatem = $('finalHatem');
+  hatem.classList.add('climb');
   setTimeout(() => {
-    avatar.classList.remove('climb');
-    avatar.classList.add('dance');
+    hatem.classList.remove('climb');
+    hatem.classList.add('dance');
     $('finalCard').classList.add('hidden');
-    $('celebrationCard').classList.remove('hidden');
+    $('celebration').classList.remove('hidden');
     launchConfetti();
-  }, 1250);
+  }, 1200);
 }
 
 async function shareInvite() {
@@ -158,32 +120,25 @@ async function shareInvite() {
   if (navigator.share) await navigator.share({ title: 'دعوة ديت ديتون', text, url });
   else {
     await navigator.clipboard.writeText(url);
-    alert('تم نسخ رابط الدعوة');
+    alert('تم نسخ الرابط');
   }
 }
 
 function toggleSound() {
   state.sound = !state.sound;
   $('soundBtn').textContent = state.sound ? '♫' : '♪';
-  $('soundBtn').style.background = state.sound ? 'rgba(244,184,77,.82)' : 'rgba(255,255,255,.65)';
+  $('soundBtn').style.background = state.sound ? 'rgba(244,186,84,.82)' : 'rgba(255,255,255,.65)';
 }
 
 function init() {
-  $('openCurtainBtn')?.addEventListener('click', (event) => {
-    event.stopPropagation();
-    openCurtain();
-  });
-  $('curtainStage')?.addEventListener('click', openCurtain);
-  document.querySelectorAll('.next-scene').forEach(btn => btn.addEventListener('click', () => goTo(btn.dataset.next)));
+  $('openInviteBtn')?.addEventListener('click', openInvite);
+  document.querySelectorAll('.next').forEach((btn) => btn.addEventListener('click', () => goTo(btn.dataset.next)));
   $('rideBtn')?.addEventListener('click', startRoute);
   $('nextRule')?.addEventListener('click', nextRule);
   $('prevRule')?.addEventListener('click', prevRule);
-  document.querySelectorAll('.accept-btn').forEach(btn => btn.addEventListener('click', acceptInvite));
+  document.querySelectorAll('.accept').forEach((btn) => btn.addEventListener('click', acceptInvite));
   $('shareBtn')?.addEventListener('click', shareInvite);
   $('soundBtn')?.addEventListener('click', toggleSound);
-  $('soundBtn')?.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' || e.key === ' ') toggleSound();
-  });
 }
 
 document.addEventListener('DOMContentLoaded', init);
