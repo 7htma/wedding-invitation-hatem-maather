@@ -1,5 +1,6 @@
 const scenes = Array.from(document.querySelectorAll('.scene'));
 const state = {
+  curtainOpened: false,
   routeStarted: false,
   ruleIndex: 0,
   accepted: false,
@@ -53,15 +54,24 @@ function goTo(sceneId) {
 }
 
 function openCurtain() {
+  if (state.curtainOpened) return;
+  state.curtainOpened = true;
+
   const stage = $('curtainStage');
   const title = $('titleCard');
   const msg = $('inviteMessage');
+  const speech = $('introSpeech');
+  const button = $('openCurtainBtn');
+
+  button.disabled = true;
   stage.classList.add('open');
-  $('introSpeech').textContent = 'تفضلي.. فتحت الدعوة';
+  speech.textContent = 'تفضلي.. فتحت الدعوة';
+
+  setTimeout(() => title.classList.add('hidden'), 520);
   setTimeout(() => {
-    title.classList.add('hidden');
     msg.classList.remove('hidden');
-  }, 1150);
+    msg.scrollIntoView({ block: 'center', behavior: 'smooth' });
+  }, 1700);
 }
 
 function renderRule() {
@@ -73,9 +83,7 @@ function renderRule() {
   $('teacherAvatar')?.classList.add('tap');
   $('prevRule').disabled = state.ruleIndex === 0;
   $('nextRule').textContent = state.ruleIndex === rules.length - 1 ? 'خلصنا القوانين' : 'القانون التالي';
-  if (state.ruleIndex === rules.length - 1) {
-    $('classNext').classList.remove('hidden');
-  }
+  if (state.ruleIndex === rules.length - 1) $('classNext').classList.remove('hidden');
 }
 
 function nextRule() {
@@ -147,9 +155,8 @@ function acceptInvite() {
 async function shareInvite() {
   const url = location.href.split('#')[0];
   const text = 'دعوة ديت ديتون: موعدنا 11 يوليو 2026 الساعة 9:20 صباحًا إلى Bound café.';
-  if (navigator.share) {
-    await navigator.share({ title: 'دعوة ديت ديتون', text, url });
-  } else {
+  if (navigator.share) await navigator.share({ title: 'دعوة ديت ديتون', text, url });
+  else {
     await navigator.clipboard.writeText(url);
     alert('تم نسخ رابط الدعوة');
   }
@@ -162,13 +169,12 @@ function toggleSound() {
 }
 
 function init() {
-  $('openCurtainBtn')?.addEventListener('click', openCurtain);
-  $('curtainStage')?.addEventListener('click', (event) => {
-    if (event.target.id !== 'openCurtainBtn') openCurtain();
+  $('openCurtainBtn')?.addEventListener('click', (event) => {
+    event.stopPropagation();
+    openCurtain();
   });
-  document.querySelectorAll('.next-scene').forEach(btn => {
-    btn.addEventListener('click', () => goTo(btn.dataset.next));
-  });
+  $('curtainStage')?.addEventListener('click', openCurtain);
+  document.querySelectorAll('.next-scene').forEach(btn => btn.addEventListener('click', () => goTo(btn.dataset.next)));
   $('rideBtn')?.addEventListener('click', startRoute);
   $('nextRule')?.addEventListener('click', nextRule);
   $('prevRule')?.addEventListener('click', prevRule);
