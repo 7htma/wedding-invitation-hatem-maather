@@ -3,105 +3,88 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#f5c66b" />
-  <meta name="description" content="دعوة ديت ديتون - دعوة تفاعلية إلى الريوق" />
+  <meta name="theme-color" content="#f6c76b" />
+  <meta name="description" content="دعوة ديت ديتون - دعوة صباحية تفاعلية" />
   <title>دعوة ديت ديتون</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
-  <noscript>الرجاء تفعيل JavaScript لتعمل الدعوة التفاعلية.</noscript>
-
   <main class="app" id="app">
-    <div class="music-pill" id="soundBtn" role="button" tabindex="0" aria-label="تشغيل أو إيقاف الصوت">♪</div>
+    <button class="sound-btn" id="soundBtn" type="button" aria-label="الصوت">♪</button>
 
-    <section class="scene scene-intro active" id="sceneIntro" aria-label="بداية دعوة ديت ديتون">
-      <div class="warm-bg"></div>
-      <div class="sparkles" aria-hidden="true"></div>
+    <section class="scene intro-scene active" id="introScene" aria-label="بداية الدعوة">
+      <div class="bg morning-bg" aria-hidden="true"></div>
+      <div class="floating-shapes" aria-hidden="true"></div>
 
-      <div class="title-card" id="titleCard">
-        <p class="tiny-title">دعوة خاصة جدًا</p>
-        <h1>ديتون</h1>
-        <p>اضغطي على الستارة لبدء الحكاية</p>
-      </div>
-
-      <div class="stage curtain-stage" id="curtainStage">
-        <div class="curtain curtain-left"></div>
-        <div class="curtain curtain-right"></div>
-        <div class="curtain-rope" aria-hidden="true"></div>
-
-        <div class="hatem-character avatar-intro" id="avatarIntro" aria-label="شخصية حاتم">
-          <div class="masar-wrap"><span class="masar-base"></span><span class="masar-band"></span><span class="masar-tail"></span></div>
-          <div class="face-shape"><span class="eye eye-r"></span><span class="eye eye-l"></span><span class="brow brow-r"></span><span class="brow brow-l"></span><span class="nose"></span><span class="beard-full"></span><span class="smile"></span></div>
-          <div class="neck"></div><div class="dishdasha-body"><span class="collar"></span><span class="placket"></span><span class="belt"></span><span class="khanjar-real"></span></div>
-          <div class="arm real-arm arm-a"><span class="hand"></span></div><div class="arm real-arm arm-b"><span class="hand"></span></div>
-          <div class="leg real-leg leg-a"><span class="sandal"></span></div><div class="leg real-leg leg-b"><span class="sandal"></span></div><div class="cane-real"></div>
+      <div class="hero-layout">
+        <div class="hatem hatem-hero" aria-label="شخصية حاتم">
+          <span class="masar"><i></i></span><span class="face"><i class="eye r"></i><i class="eye l"></i><i class="nose"></i><i class="beard"></i><i class="mouth"></i></span><span class="neck"></span><span class="dish"><i class="collar"></i><i class="belt"></i><i class="khanjar"></i></span><span class="arm a1"><i></i></span><span class="arm a2"><i></i></span><span class="leg g1"><i></i></span><span class="leg g2"><i></i></span><span class="cane"></span>
         </div>
 
-        <div class="speech intro-speech" id="introSpeech">هل أفتح الستارة؟</div>
-        <button class="curtain-button" id="openCurtainBtn" type="button">نعم، افتح الدعوة</button>
+        <article class="hero-card" id="heroCard">
+          <p class="mini">دعوة خاصة جدًا</p>
+          <h1>ديت ديتون</h1>
+          <p class="lead">دعوة صباحية صغيرة، بس بقلب كبير.</p>
+          <button class="coffee-open" id="openInviteBtn" type="button" aria-label="فتح الدعوة">
+            <span class="cup"><i></i></span>
+            <strong>اضغطي على الفنجان لفتح الدعوة</strong>
+          </button>
+        </article>
       </div>
 
-      <article class="message-card hidden" id="inviteMessage">
-        <span class="seal">☕</span>
+      <article class="invite-card hidden" id="inviteCard">
+        <p class="mini">الرسالة</p>
         <h2>أهلًا بكِ زوجتي العزيزة</h2>
-        <p>أنا زوجك أدعوكِ إلى تناول وجبة الإفطار معي في ديت ديتون.</p>
-        <p class="soft-note">موعدنا الجميل يوم 11 يوليو 2026.</p>
-        <button class="primary next-scene" data-next="sceneRoute" type="button">نبدأ الرحلة</button>
+        <p>أنا زوجك أدعوكِ إلى تناول وجبة الإفطار معي في <strong>ديت ديتون</strong>.</p>
+        <p class="date-line">السبت 11 يوليو 2026 · الانطلاق 9:20 صباحًا</p>
+        <button class="primary next" data-next="routeScene" type="button">نبدأ الرحلة</button>
       </article>
     </section>
 
-    <section class="scene scene-route" id="sceneRoute" aria-label="رحلة من البيت إلى المطعم">
-      <div class="sky"></div>
-      <header class="scene-header">
-        <p class="tiny-title">المشهد الثاني</p>
-        <h2>من البيت إلى Bound café</h2>
-        <p>المهمة: نتحرك الساعة 9:20 ونوصل 9:30 بإذن الله.</p>
-      </header>
+    <section class="scene route-scene" id="routeScene" aria-label="رحلة البيت إلى المطعم">
+      <div class="bg route-bg" aria-hidden="true"></div>
+      <header class="scene-title"><p class="mini">المشهد الثاني</p><h2>من البيت إلى Bound café</h2><p>نطلع 9:20 ونوصل 9:30 بإذن الله.</p></header>
 
-      <div class="journey-card">
-        <div class="mini-building house-building"><div class="building-top"></div><div class="window w1"></div><div class="window w2"></div><div class="door"></div><p>بيت مآثر</p></div>
-        <div class="route-board">
-          <svg viewBox="0 0 600 260" class="route-svg" aria-hidden="true"><path d="M70 190 C140 70, 220 230, 305 130 S460 80, 535 175" class="road-shadow"/><path d="M70 190 C140 70, 220 230, 305 130 S460 80, 535 175" class="road-line"/><circle cx="70" cy="190" r="9" class="point home"/><circle cx="535" cy="175" r="9" class="point cafe"/></svg>
-          <div class="route-car" id="routeCar"><span class="car-body">🚗</span><span class="driver-mini"><span></span></span></div>
-          <div class="hatem-character route-avatar" id="routeAvatar" aria-label="شخصية حاتم في بداية الرحلة">
-            <div class="masar-wrap"><span class="masar-base"></span><span class="masar-band"></span><span class="masar-tail"></span></div><div class="face-shape"><span class="eye eye-r"></span><span class="eye eye-l"></span><span class="brow brow-r"></span><span class="brow brow-l"></span><span class="nose"></span><span class="beard-full"></span><span class="smile"></span></div><div class="neck"></div><div class="dishdasha-body"><span class="collar"></span><span class="placket"></span><span class="belt"></span><span class="khanjar-real"></span></div><div class="arm real-arm arm-a"><span class="hand"></span></div><div class="arm real-arm arm-b"><span class="hand"></span></div><div class="leg real-leg leg-a"><span class="sandal"></span></div><div class="leg real-leg leg-b"><span class="sandal"></span></div><div class="cane-real"></div>
-          </div>
-          <div class="route-label from">من هنا</div><div class="route-label to">الريوق هنا</div>
+      <div class="route-world">
+        <div class="place-card house"><span class="roof"></span><span class="window w1"></span><span class="window w2"></span><span class="door"></span><strong>بيت مآثر</strong></div>
+        <div class="map-card">
+          <svg class="path-map" viewBox="0 0 600 300" aria-hidden="true"><path class="road-bg" d="M75 215 C160 70 235 260 315 145 C390 40 455 90 535 185"/><path class="road" d="M75 215 C160 70 235 260 315 145 C390 40 455 90 535 185"/><circle class="dot start" cx="75" cy="215" r="12"/><circle class="dot end" cx="535" cy="185" r="12"/></svg>
+          <div class="hatem route-person" id="routePerson"><span class="masar"><i></i></span><span class="face"><i class="eye r"></i><i class="eye l"></i><i class="nose"></i><i class="beard"></i><i class="mouth"></i></span><span class="neck"></span><span class="dish"><i class="collar"></i><i class="belt"></i><i class="khanjar"></i></span><span class="arm a1"><i></i></span><span class="arm a2"><i></i></span><span class="leg g1"><i></i></span><span class="leg g2"><i></i></span><span class="cane"></span></div>
+          <div class="car" id="car"><span></span><i></i></div>
+          <span class="map-label start-label">البداية</span><span class="map-label end-label">الريوق</span>
         </div>
-        <div class="mini-building cafe-building"><div class="cafe-sign">Bound café</div><div class="glass-door"></div><div class="cafe-window"></div><p>المطعم</p></div>
+        <div class="place-card cafe"><span class="sign">Bound café</span><span class="glass"></span><span class="cafe-window"></span><strong>المطعم</strong></div>
       </div>
 
-      <div class="timeline"><div><strong>9:20</strong><span>نطلع من البيت</span></div><div><strong>9:30</strong><span>نوصل Bound café</span></div></div>
-      <div class="action-row"><a class="secondary" href="https://maps.app.goo.gl/9Q78utYXzB2YvN2P6?g_st=ic" target="_blank" rel="noopener">موقع البداية</a><button class="primary" id="rideBtn" type="button">اركب السيارة</button><a class="secondary" href="https://maps.app.goo.gl/uaX7VJD9oBG22Bty5?g_st=ic" target="_blank" rel="noopener">موقع المطعم</a></div>
-      <button class="primary next-scene route-next hidden" id="routeNext" data-next="sceneClass" type="button">ادخل كلاس القوانين</button>
+      <div class="time-row"><div><strong>9:20</strong><span>نطلع من البيت</span></div><div><strong>9:30</strong><span>نوصل المطعم</span></div></div>
+      <div class="actions"><a class="secondary" href="https://maps.app.goo.gl/9Q78utYXzB2YvN2P6?g_st=ic" target="_blank" rel="noopener">موقع البداية</a><button class="primary" id="rideBtn" type="button">اركب السيارة</button><a class="secondary" href="https://maps.app.goo.gl/uaX7VJD9oBG22Bty5?g_st=ic" target="_blank" rel="noopener">موقع المطعم</a></div>
+      <button class="primary next hidden" id="routeNext" data-next="classScene" type="button">نروح كلاس القوانين</button>
     </section>
 
-    <section class="scene scene-class" id="sceneClass" aria-label="كلاس قوانين ديت ديتون">
-      <div class="classroom-transition" id="classTransition"><span>سحب الستارة إلى كلاس القوانين</span></div>
-      <header class="scene-header class-header"><p class="tiny-title">المشهد الثالث</p><h2>كلاس قوانين ديت ديتون</h2><p>قبل الريوق، لازم نراجع قوانين الطلعة.</p></header>
+    <section class="scene class-scene" id="classScene" aria-label="كلاس قوانين ديت ديتون">
+      <div class="bg class-bg" aria-hidden="true"></div>
+      <div class="door-wipe" id="doorWipe">فتح باب الكلاس...</div>
+      <header class="scene-title"><p class="mini">المشهد الثالث</p><h2>كلاس قوانين ديت ديتون</h2><p>شرح سريع قبل الريوق عشان نستانس براحتنا.</p></header>
+
       <div class="classroom">
-        <div class="hatem-character teacher-avatar" id="teacherAvatar" aria-label="شخصية حاتم تشرح القوانين">
-          <div class="masar-wrap"><span class="masar-base"></span><span class="masar-band"></span><span class="masar-tail"></span></div><div class="face-shape"><span class="eye eye-r"></span><span class="eye eye-l"></span><span class="brow brow-r"></span><span class="brow brow-l"></span><span class="nose"></span><span class="beard-full"></span><span class="smile"></span></div><div class="neck"></div><div class="dishdasha-body"><span class="collar"></span><span class="placket"></span><span class="belt"></span><span class="khanjar-real"></span></div><div class="arm real-arm arm-a"><span class="hand"></span></div><div class="arm real-arm arm-b teacher-arm"><span class="hand"></span></div><div class="leg real-leg leg-a"><span class="sandal"></span></div><div class="leg real-leg leg-b"><span class="sandal"></span></div><div class="pointer-stick"></div>
-        </div>
-        <article class="chalkboard" id="chalkboard"><h3 id="ruleTitle">القانون الأول</h3><div id="ruleContent" class="rule-content"></div><div class="chalk-dust" aria-hidden="true"></div></article>
+        <div class="hatem teacher" id="teacher"><span class="masar"><i></i></span><span class="face"><i class="eye r"></i><i class="eye l"></i><i class="nose"></i><i class="beard"></i><i class="mouth"></i></span><span class="neck"></span><span class="dish"><i class="collar"></i><i class="belt"></i><i class="khanjar"></i></span><span class="arm a1"><i></i></span><span class="arm a2 point"><i></i></span><span class="leg g1"><i></i></span><span class="leg g2"><i></i></span><span class="pointer"></span></div>
+        <article class="board"><h3 id="ruleTitle">القانون الأول</h3><div id="ruleBody"></div><span class="chalk"></span></article>
       </div>
-      <div class="action-row class-actions"><button class="secondary" id="prevRule" type="button">السابق</button><button class="primary" id="nextRule" type="button">القانون التالي</button></div>
-      <button class="primary next-scene class-next hidden" id="classNext" data-next="sceneFinal" type="button">تمام، ننتقل للنهاية</button>
+
+      <div class="actions"><button class="secondary" id="prevRule" type="button">السابق</button><button class="primary" id="nextRule" type="button">القانون التالي</button></div>
+      <button class="primary next hidden" id="classNext" data-next="finalScene" type="button">تم، نروح النهاية</button>
     </section>
 
-    <section class="scene scene-final" id="sceneFinal" aria-label="تأكيد حضور ديت ديتون">
-      <div class="final-bg"></div>
-      <div class="hatem-character final-avatar" id="finalAvatar" aria-label="شخصية حاتم في النهاية">
-        <div class="masar-wrap"><span class="masar-base"></span><span class="masar-band"></span><span class="masar-tail"></span></div><div class="face-shape"><span class="eye eye-r"></span><span class="eye eye-l"></span><span class="brow brow-r"></span><span class="brow brow-l"></span><span class="nose"></span><span class="beard-full"></span><span class="smile"></span></div><div class="neck"></div><div class="dishdasha-body"><span class="collar"></span><span class="placket"></span><span class="belt"></span><span class="khanjar-real"></span></div><div class="arm real-arm arm-a"><span class="hand"></span></div><div class="arm real-arm arm-b"><span class="hand"></span></div><div class="leg real-leg leg-a"><span class="sandal"></span></div><div class="leg real-leg leg-b"><span class="sandal"></span></div><div class="cane-real"></div>
-      </div>
-      <article class="final-card" id="finalCard"><p class="tiny-title">آخر خطوة</p><h2>هل توافقين الحضور؟</h2><p>هذه دعوة رسمية من زوجك إلى ديت ديتون، والاختيارات كلها لصالح الموافقة.</p><div class="yes-grid"><button class="accept-btn" type="button">أوافق الحضور</button><button class="accept-btn" type="button">أوافق الحضور نعم</button></div><p class="saved-text" id="savedText"></p></article>
-      <article class="celebration-card hidden" id="celebrationCard"><h2>تم اعتماد ديت ديتون 🎉</h2><p>موعدنا: 11 يوليو 2026، الساعة 9:20 صباحًا.</p><p>الوجهة: Bound café.</p><button class="primary" id="shareBtn" type="button">مشاركة الرابط</button></article>
+    <section class="scene final-scene" id="finalScene" aria-label="الموافقة">
+      <div class="bg final-bg" aria-hidden="true"></div>
+      <div class="hatem final-hatem" id="finalHatem"><span class="masar"><i></i></span><span class="face"><i class="eye r"></i><i class="eye l"></i><i class="nose"></i><i class="beard"></i><i class="mouth"></i></span><span class="neck"></span><span class="dish"><i class="collar"></i><i class="belt"></i><i class="khanjar"></i></span><span class="arm a1"><i></i></span><span class="arm a2"><i></i></span><span class="leg g1"><i></i></span><span class="leg g2"><i></i></span><span class="cane"></span></div>
+      <article class="final-card" id="finalCard"><p class="mini">آخر خطوة</p><h2>هل توافقين الحضور؟</h2><p>الاختيارات كلها للموافقة، لأن ديت ديتون ما يترفض.</p><div class="yes-grid"><button class="accept" type="button">أوافق الحضور</button><button class="accept" type="button">أوافق الحضور نعم</button></div><p id="savedText" class="saved"></p></article>
+      <article class="celebration hidden" id="celebration"><h2>تم اعتماد ديت ديتون 🎉</h2><p>موعدنا 11 يوليو 2026 الساعة 9:20 صباحًا إلى Bound café.</p><button class="primary" id="shareBtn" type="button">مشاركة الرابط</button></article>
     </section>
   </main>
-
   <script src="js/app.js"></script>
 </body>
 </html>
