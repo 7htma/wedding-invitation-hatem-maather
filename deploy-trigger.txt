@@ -1,1 +1,1 @@
-Trigger GitHub Pages deployment after Date Daiton curtain and character fixes.
+Trigger GitHub Pages deployment after rebuilding Date Daiton without curtain theme.
