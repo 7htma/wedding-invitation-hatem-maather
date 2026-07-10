@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5c66b" />
+  <meta name="description" content="دعوة ديت ديتون - دعوة تفاعلية إلى الريوق" />
+  <title>دعوة ديت ديتون</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <noscript>الرجاء تفعيل JavaScript لتعمل الدعوة التفاعلية.</noscript>
+
+  <main class="app" id="app">
+    <div class="music-pill" id="soundBtn" role="button" tabindex="0" aria-label="تشغيل أو إيقاف الصوت">♪</div>
+
+    <section class="scene scene-intro active" id="sceneIntro" aria-label="بداية دعوة ديت ديتون">
+      <div class="warm-bg"></div>
+      <div class="sparkles" aria-hidden="true"></div>
+
+      <div class="title-card" id="titleCard">
+        <p class="tiny-title">دعوة خاصة جدًا</p>
+        <h1>ديتون</h1>
+        <p>اضغطي على الستارة لبدء الحكاية</p>
+      </div>
+
+      <div class="stage curtain-stage" id="curtainStage">
+        <div class="curtain curtain-left"></div>
+        <div class="curtain curtain-right"></div>
+        <div class="curtain-rope" aria-hidden="true"></div>
+        <div class="avatar avatar-intro" id="avatarIntro" aria-label="شخصية حاتم">
+          <div class="head"><span class="masar"></span><span class="face"></span><span class="beard"></span></div>
+          <div class="body"><span class="dishdasha"></span><span class="khanjar"></span></div>
+          <div class="arm arm-right"></div><div class="arm arm-left"></div><div class="leg leg-right"></div><div class="leg leg-left"></div><div class="cane"></div>
+        </div>
+        <div class="speech intro-speech" id="introSpeech">هل أفتح الستارة؟</div>
+        <button class="curtain-button" id="openCurtainBtn" type="button">نعم، افتح الدعوة</button>
+      </div>
+
+      <article class="message-card hidden" id="inviteMessage">
+        <span class="seal">☕</span>
+        <h2>أهلًا بكِ زوجتي العزيزة</h2>
+        <p>أنا زوجك أدعوكِ إلى تناول وجبة الإفطار معي في ديت ديتون.</p>
+        <p class="soft-note">موعدنا الجميل يوم 11 يوليو 2026.</p>
+        <button class="primary next-scene" data-next="sceneRoute" type="button">نبدأ الرحلة</button>
+      </article>
+    </section>
+
+    <section class="scene scene-route" id="sceneRoute" aria-label="رحلة من البيت إلى المطعم">
+      <div class="sky"></div>
+      <header class="scene-header">
+        <p class="tiny-title">المشهد الثاني</p>
+        <h2>من البيت إلى Bound café</h2>
+        <p>المهمة: نتحرك الساعة 9:20 ونوصل 9:30 بإذن الله.</p>
+      </header>
+
+      <div class="journey-card">
+        <div class="mini-building house-building">
+          <div class="building-top"></div>
+          <div class="window w1"></div><div class="window w2"></div><div class="door"></div>
+          <p>بيت مآثر</p>
+        </div>
+
+        <div class="route-board">
+          <svg viewBox="0 0 600 260" class="route-svg" aria-hidden="true">
+            <path d="M70 190 C140 70, 220 230, 305 130 S460 80, 535 175" class="road-shadow"/>
+            <path d="M70 190 C140 70, 220 230, 305 130 S460 80, 535 175" class="road-line"/>
+            <circle cx="70" cy="190" r="9" class="point home"/>
+            <circle cx="535" cy="175" r="9" class="point cafe"/>
+          </svg>
+          <div class="route-car" id="routeCar"><span class="car-body">🚗</span><span class="driver-dot">👳🏻‍♂️</span></div>
+          <div class="route-avatar" id="routeAvatar">👳🏻‍♂️</div>
+          <div class="route-label from">من هنا</div>
+          <div class="route-label to">الريوق هنا</div>
+        </div>
+
+        <div class="mini-building cafe-building">
+          <div class="cafe-sign">Bound café</div>
+          <div class="glass-door"></div><div class="cafe-window"></div>
+          <p>المطعم</p>
+        </div>
+      </div>
+
+      <div class="timeline">
+        <div><strong>9:20</strong><span>نطلع من البيت</span></div>
+        <div><strong>9:30</strong><span>نوصل Bound café</span></div>
+      </div>
+
+      <div class="action-row">
+        <a class="secondary" href="https://maps.app.goo.gl/9Q78utYXzB2YvN2P6?g_st=ic" target="_blank" rel="noopener">موقع البداية</a>
+        <button class="primary" id="rideBtn" type="button">اركب السيارة</button>
+        <a class="secondary" href="https://maps.app.goo.gl/uaX7VJD9oBG22Bty5?g_st=ic" target="_blank" rel="noopener">موقع المطعم</a>
+      </div>
+
+      <button class="primary next-scene route-next hidden" id="routeNext" data-next="sceneClass" type="button">ادخل كلاس القوانين</button>
+    </section>
+
+    <section class="scene scene-class" id="sceneClass" aria-label="كلاس قوانين ديت ديتون">
+      <div class="classroom-transition" id="classTransition"><span>سحب الستارة إلى كلاس القوانين</span></div>
+      <header class="scene-header class-header">
+        <p class="tiny-title">المشهد الثالث</p>
+        <h2>كلاس قوانين ديت ديتون</h2>
+        <p>قبل الريوق، لازم نراجع قوانين الطلعة.</p>
+      </header>
+
+      <div class="classroom">
+        <div class="teacher-avatar" id="teacherAvatar">
+          <div class="teacher-head"><span></span></div>
+          <div class="teacher-body"></div>
+          <div class="pointer-stick"></div>
+        </div>
+        <article class="chalkboard" id="chalkboard">
+          <h3 id="ruleTitle">القانون الأول</h3>
+          <div id="ruleContent" class="rule-content"></div>
+          <div class="chalk-dust" aria-hidden="true"></div>
+        </article>
+      </div>
+
+      <div class="action-row class-actions">
+        <button class="secondary" id="prevRule" type="button">السابق</button>
+        <button class="primary" id="nextRule" type="button">القانون التالي</button>
+      </div>
+
+      <button class="primary next-scene class-next hidden" id="classNext" data-next="sceneFinal" type="button">تمام، ننتقل للنهاية</button>
+    </section>
+
+    <section class="scene scene-final" id="sceneFinal" aria-label="تأكيد حضور ديت ديتون">
+      <div class="final-bg"></div>
+      <div class="final-avatar" id="finalAvatar">👳🏻‍♂️</div>
+      <article class="final-card" id="finalCard">
+        <p class="tiny-title">آخر خطوة</p>
+        <h2>هل توافقين الحضور؟</h2>
+        <p>هذه دعوة رسمية من زوجك إلى ديت ديتون، والاختيارات كلها لصالح الموافقة.</p>
+        <div class="yes-grid">
+          <button class="accept-btn" type="button">أوافق الحضور</button>
+          <button class="accept-btn" type="button">أوافق الحضور نعم</button>
+        </div>
+        <p class="saved-text" id="savedText"></p>
+      </article>
+
+      <article class="celebration-card hidden" id="celebrationCard">
+        <h2>تم اعتماد ديت ديتون 🎉</h2>
+        <p>موعدنا: 11 يوليو 2026، الساعة 9:20 صباحًا.</p>
+        <p>الوجهة: Bound café.</p>
+        <button class="primary" id="shareBtn" type="button">مشاركة الرابط</button>
+      </article>
+    </section>
+  </main>
+
+  <script src="js/app.js"></script>
+</body>
+</html>
